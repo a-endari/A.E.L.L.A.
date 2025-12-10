@@ -1,0 +1,69 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+**/.DS_Store
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Antigravity / AI
+.gemini/
+.agent/
+# Keep workflows if they exist, but ignore temp or brain data if it ends up here
+!.agent/workflows/
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+backend/.venv
+backend/venv
+*.egg-info/
+.coverage
+htmlcov/
+
+# Node / Frontend / Next.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.next/
+dist/
+out/
+build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+tstsconfig.tsbuildinfo
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
