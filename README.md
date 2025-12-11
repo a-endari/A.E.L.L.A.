@@ -81,7 +81,6 @@ Visit `http://localhost:3000` to start learning!
 ## 🔮 Future Roadmap
 
 - [ ] **Electron Integration**: Bundle as a standalone desktop executable.
-- [ ] **Flashcard Generator**: One-click `.apkg` export.
 - [ ] **Polyglot Mode**: Support for multi-language dictionaries.
 - [ ] **AI Context**: LLM-powered sentence generation for vocab words.
 
