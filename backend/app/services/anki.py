@@ -3,7 +3,7 @@ import random
 from typing import List, Dict, Any
 from io import BytesIO
 
-def create_deck(cards_data: List[Dict[str, Any]]) -> BytesIO:
+def create_deck(cards_data: List[Dict[str, Any]], deck_name: str = 'Universal Language Deck') -> BytesIO:
     """
     Generates an Anki deck (.apkg) from a list of word data objects.
     Returns: BytesIO object containing the .apkg file content.
@@ -29,7 +29,7 @@ def create_deck(cards_data: List[Dict[str, Any]]) -> BytesIO:
             },
         ])
 
-    deck = genanki.Deck(deck_id, 'Universal Language Deck')
+    deck = genanki.Deck(deck_id, deck_name)
 
     for card in cards_data:
         german = card.get('clean_word', '')

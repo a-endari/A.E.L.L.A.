@@ -7,6 +7,7 @@ from app.services.pronunciation import get_audio_url_async
 from app.services.text_processing import remove_article
 from app.services.anki import create_deck
 from app.services.obsidian import create_obsidian_zip
+from app.services.db import get_lists, create_list, delete_list, get_cards_for_list, add_card, delete_card
 from fastapi.responses import Response
 
 app = FastAPI(title="Universal Language App API")
@@ -76,17 +77,53 @@ class AnkiRequest(BaseModel):
     cards: list[dict]
 
 @app.post("/api/anki/download")
-async def download_anki_deck(request: AnkiRequest):
-    deck_stream = create_deck(request.cards)
-    headers = {'Content-Disposition': 'attachment; filename="UniversalLanguageDeck.apkg"'}
+async def download_anki_deck(request: AnkiRequest, deck_name: str = "Universal Language Deck"):
+    # Note: deck_name can be passed as query param
+    deck_stream = create_deck(request.cards, deck_name)
+    filename = f"{deck_name.replace(' ', '_')}.apkg"
+    headers = {'Content-Disposition': f'attachment; filename="{filename}"'}
     return Response(content=deck_stream.read(), media_type="application/octet-stream", headers=headers)
 
 @app.post("/api/obsidian/download")
-async def download_obsidian_zip(request: AnkiRequest):
-    # Reusing AnkiRequest since the data structure (list of cards) is the same
-    zip_stream = await create_obsidian_zip(request.cards)
-    headers = {'Content-Disposition': 'attachment; filename="UniversalLanguageObsidian.zip"'}
+async def download_obsidian_zip(request: AnkiRequest, note_name: str = "My Vocabulary"):
+    # Note: note_name can be passed as query param
+    zip_stream = await create_obsidian_zip(request.cards) # Obsidian logic might need update too if we want to change internal filename
+    filename = f"{note_name.replace(' ', '_')}.zip"
+    headers = {'Content-Disposition': f'attachment; filename="{filename}"'}
     return Response(content=zip_stream.read(), media_type="application/zip", headers=headers)
+
+class ListCreate(BaseModel):
+    name: str
+
+@app.get("/api/lists")
+async def read_lists():
+    return get_lists()
+
+@app.post("/api/lists")
+async def create_new_list(list_data: ListCreate):
+    success = create_list(list_data.name)
+    if not success:
+        raise HTTPException(status_code=400, detail="List already exists")
+    return {"status": "created", "name": list_data.name}
+
+@app.delete("/api/lists/{list_id}")
+async def remove_list(list_id: int):
+    delete_list(list_id)
+    return {"status": "deleted", "id": list_id}
+
+@app.get("/api/lists/{list_id}/cards")
+async def read_list_cards(list_id: int):
+    return get_cards_for_list(list_id)
+
+@app.post("/api/lists/{list_id}/cards")
+async def save_card_to_list(list_id: int, card: dict):
+    add_card(list_id, card)
+    return {"status": "success", "word": card.get("clean_word")}
+
+@app.delete("/api/lists/{list_id}/cards/{word}")
+async def remove_card_from_list(list_id: int, word: str):
+    delete_card(list_id, word)
+    return {"status": "deleted", "word": word}
 
 
 

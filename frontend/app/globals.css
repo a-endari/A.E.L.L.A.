@@ -1,12 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0f172a;
-  --foreground: #f8fafc;
+@theme {
+  --font-outfit: "Outfit", sans-serif;
 }
 
+/* 
+  Variable Reference:
+  --bg-main: The underlying page background
+  --bg-card: Sidebar and Cards background
+  --bg-input: Inputs and interactive elements
+  --text-main: Primary text color
+  --text-muted: Secondary/Subtle text color
+  --accent: Primary Brand Color (Buttons, Highlights)
+  --border: Border lines
+*/
+
+:root {
+  /* Default (Slate/Purple - Existing) */
+  --bg-main: #020617; /* slate-950 */
+  --bg-card: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+  --bg-input: rgba(255, 255, 255, 0.05); /* white/5 */
+  --text-main: #f8fafc; /* slate-50 */
+  --text-muted: #94a3b8; /* slate-400 */
+  --accent: #a855f7; /* purple-500 */
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-main: #f8fafc; /* slate-50 */
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-input: rgba(0, 0, 0, 0.05);
+  --text-main: #0f172a; /* slate-900 */
+  --text-muted: #64748b; /* slate-500 */
+  --accent: #2563eb; /* blue-600 */
+  --border: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="tokyo-night"] {
+  --bg-main: #1a1b26;
+  --bg-card: rgba(22, 22, 30, 0.8);
+  --bg-input: rgba(169, 177, 214, 0.1);
+  --text-main: #c0caf5;
+  --text-muted: #565f89;
+  --accent: #7aa2f7; /* blue */
+  --border: rgba(169, 177, 214, 0.1);
+}
+
+[data-theme="ayu"] {
+  --bg-main: #0f1419; /* mirage */
+  --bg-card: rgba(19, 23, 33, 0.8);
+  --bg-input: rgba(229, 181, 103, 0.1);
+  --text-main: #e6e1cf;
+  --text-muted: #5c6773;
+  --accent: #ff9940; /* orange */
+  --border: rgba(229, 181, 103, 0.1);
+}
+
+[data-theme="catppuccin"] {
+  --bg-main: #1e1e2e; /* mocha base */
+  --bg-card: rgba(24, 24, 37, 0.8); /* mantle */
+  --bg-input: rgba(205, 214, 244, 0.1);
+  --text-main: #cdd6f4; /* text */
+  --text-muted: #a6adc8; /* subtext0 */
+  --accent: #cba6f7; /* mauve */
+  --border: rgba(205, 214, 244, 0.1);
+}
+
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-main);
+  color: var(--text-main);
   font-family: var(--font-outfit), sans-serif;
+  transition: background 0.5s ease, color 0.5s ease;
 }
