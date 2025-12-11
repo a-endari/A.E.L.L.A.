@@ -377,12 +377,13 @@ export default function Home() {
                     <div className="space-y-4">
                       <p className="text-sm font-medium text-green-300 uppercase tracking-wider">English Definition</p>
                       <p className="text-xl text-slate-200 font-serif italic">
-                        {data.english_definition}
+                        {data.english_definition || <span className="text-slate-500 text-base not-italic">Definition not available</span>}
                       </p>
                     </div>
 
                     {/* Persian Definition (Now Bottom) */}
-                    {data.definitions && data.definitions.length > 0 && (
+                    {/* Persian Definition (Now Bottom) */}
+                    {(includePersian) && (
                       <div className="space-y-4 pt-6 border-t border-white/10 relative">
                         <div className="flex items-center justify-between">
                           <p className="text-sm font-medium text-blue-300 uppercase tracking-wider">Persian Definition</p>
@@ -404,13 +405,17 @@ export default function Home() {
                               className="text-white leading-relaxed"
                               dir="rtl"
                             >
-                              <ul className="space-y-2 text-2xl font-bold">
-                                {data.definitions.map((def, i) => (
-                                  <li key={i} className="flex gap-2 justify-start">
-                                    <span>{def}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                              {data.definitions && data.definitions.length > 0 ? (
+                                <ul className="space-y-2 text-2xl font-bold">
+                                  {data.definitions.map((def, i) => (
+                                    <li key={i} className="flex gap-2 justify-start">
+                                      <span>{def}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : (
+                                <p className="text-slate-500 italic text-base text-left" dir="ltr">Definition not available</p>
+                              )}
                             </motion.div>
                           ) : (
                             <motion.div

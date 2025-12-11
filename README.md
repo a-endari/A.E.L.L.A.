@@ -7,7 +7,20 @@
 ![Next.js](https://img.shields.io/badge/Frontend-Next.js_14-black?logo=next.js&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-In_Development-orange)
 
-A scalable, comprehensive language learning companion designed to be your **Personal Language Pal**. Built to assist with vocabulary acquisition, pronunciation mastery, and knowledge retention through seamless integration with powerful tools like **Anki** and **Obsidian**.
+![Dashboard Preview](screenshots/dashboard_preview.png)
+
+A scalable, comprehensive language learning companion designed to be your **Personal Language Pal**. 
+
+**Current Focus**: 🇩🇪 **German** learning for native 🇬🇧 **English** and 🇮🇷 **Persian** speakers.
+
+Built to assist with vocabulary acquisition, pronunciation mastery, and knowledge retention through seamless integration with powerful tools like **Anki** and **Obsidian**.
+
+## 📑 Table of Contents
+- [✨ Features](#-features-planned--in-progress)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📦 Installation Guide](#-installation-guide)
+- [🔮 Future Roadmap](#-future-roadmap)
+- [📄 License](#-license)
 
 ---
 
@@ -35,19 +48,26 @@ A scalable, comprehensive language learning companion designed to be your **Pers
 
 ---
 
-## 🚀 Getting Started
+## 📦 Installation Guide
 
-### Prerequisites
-- Node.js (v18+)
+> [!NOTE] 
+> **Ease of Access Upcoming**: 
+> We are planning to release a **Docker** container and a **Standalone Desktop App** (executable) in the future, so you won't need to set up the dev environment manually!
+
+### 1. Backend Setup (API)
+Ensure you have **Python 3.10+** installed.
+
 ```bash
 cd backend
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-### Frontend
+### 2. Frontend Setup (UI)
+Ensure you have **Node.js 18+** installed.
+
 ```bash
 cd frontend
 npm install

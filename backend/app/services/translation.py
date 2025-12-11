@@ -1,3 +1,4 @@
+import re
 import asyncio
 import aiohttp
 import requests
@@ -18,12 +19,21 @@ def parse_definition(html):
     if quick_access:
         spans = quick_access.find_all("span")
         # Text cleaning: Remove empty strings
+        # Text cleaning: Remove empty strings and numbering "1 . ", "2 . "
         raw_texts = [s.get_text(strip=True) for s in spans]
-        # Filter: B-amooz often has empty spans or just numbers.
-        # The test showed ['1 . قطار', '2 . جرعه'] which is perfect.
-        definitions = [t for t in raw_texts if t]
+        
+        cleaned_defs = []
+        for text in raw_texts:
+            if not text:
+                continue
+            # Remove leading numbers and dots (e.g. "1 . ", "2.")
+            clean_text = re.sub(r'^\d+\s*\.\s*', '', text).strip()
+            if clean_text:
+                cleaned_defs.append(clean_text)
+                
+        definitions = cleaned_defs
     
-    return definitions if definitions else ["No definition found"]
+    return definitions
 
 async def scrape_persian_definitions(german_word: str) -> list[str]:
     """Async version of definition scraper"""
