@@ -7,7 +7,26 @@
 ![Next.js](https://img.shields.io/badge/Frontend-Next.js_14-black?logo=next.js&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-In_Development-orange)
 
-![Dashboard Preview](screenshots/dashboard_preview.png)
+### 🎨 Theme Showcase
+
+**Midnight Theme (Default)**
+![Midnight Theme](screenshots/ScreenShot_Midnight.png)
+
+<details>
+<summary>📸 View More Themes</summary>
+
+**Paper Theme**
+![Paper Theme](screenshots/ScreenShot_Paper.png)
+
+**Tokyo Night Theme**
+![Tokyo Night Theme](screenshots/ScreenShot_TokyoNight.png)
+
+**Ayu Mirage Theme**
+![Ayu Mirage Theme](screenshots/ScreenShot_AyuMirage.png)
+
+</details>
+
+---
 
 A scalable, comprehensive language learning companion designed to be your **Personal Language Pal**. 
 

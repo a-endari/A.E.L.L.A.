@@ -128,9 +128,12 @@ export default function Home() {
   // Load cards when activeList changes
   useEffect(() => {
     if (!activeList) return;
+
+    const listId = activeList.id; // Extract ID to satisfy TypeScript
+
     async function loadCards() {
       try {
-        const res = await axios.get(`http://localhost:8000/api/lists/${activeList.id}/cards`);
+        const res = await axios.get(`http://localhost:8000/api/lists/${listId}/cards`);
         setSavedCards(res.data);
       } catch (e) {
         console.error("Failed to load cards", e);
