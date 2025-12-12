@@ -69,9 +69,25 @@ Built to assist with vocabulary acquisition, pronunciation mastery, and knowledg
 
 ## 📦 Installation Guide
 
-> [!NOTE] 
-> **Ease of Access Upcoming**: 
-> We are planning to release a **Docker** container and a **Standalone Desktop App** (executable) in the future, so you won't need to set up the dev environment manually!
+### Quick Start with Docker (Recommended)
+With Docker, you can run the entire application with a single command, without needing to install Python or Node.js on your machine.
+
+1.  **Install Docker**: Make sure you have [Docker](https://docs.docker.com/get-docker/) installed and running on your system.
+
+2.  **Run the application**:
+    ```bash
+    docker-compose up --build
+    ```
+
+    This will build the frontend and backend images and start the containers.
+
+    - The frontend will be available at `http://localhost:3000`
+    - The backend API will be running at `http://localhost:8000`
+
+### Manual Setup
+
+> [!NOTE]
+> The following instructions are for setting up the development environment manually. If you just want to run the application, we recommend using the Docker method above.
 
 ### 1. Backend Setup (API)
 Ensure you have **Python 3.10+** installed.
