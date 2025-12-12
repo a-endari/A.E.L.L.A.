@@ -1,0 +1,21 @@
+version: '3.8'
+
+# Docker Compose configuration using pre-built images from GitHub Container Registry
+# Use this file instead of the default docker-compose.yml if you don't want to build locally
+
+services:
+  backend:
+    image: ghcr.io/a-endari/a.e.l.l.a/backend:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  frontend:
+    image: ghcr.io/a-endari/a.e.l.l.a/frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
