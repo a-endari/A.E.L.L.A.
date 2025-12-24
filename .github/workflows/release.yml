@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: frontend
-        run: npm ci
+        run: npm install
 
       - name: Build Next.js App
         working-directory: frontend
@@ -40,6 +40,9 @@ jobs:
         run: |
           pip install -r backend/requirements.txt
           pip install pyinstaller
+
+      - name: Create Backend Dist Directory
+        run: mkdir -p frontend/backend_dist
 
       - name: Package Python Backend (Mac)
         if: runner.os == 'macOS'
