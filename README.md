@@ -30,8 +30,6 @@
 
 A scalable, comprehensive language learning companion designed to be your **Personal Language Pal**. 
 
-**Current Focus**: 🇩🇪 **German** learning for native 🇬🇧 **English** and 🇮🇷 **Persian** speakers.
-
 Built to assist with vocabulary acquisition, pronunciation mastery, and knowledge retention through seamless integration with powerful tools like **Anki** and **Obsidian**.
 
 ## 📑 Table of Contents

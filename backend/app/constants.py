@@ -19,5 +19,4 @@ SUPPORTED_LANGUAGES = {
     "pl": {"name": "Polish", "voice": "pl-PL-ZofiaNeural"},
 }
 
-# Source languages can be any of these.
-# Target is usually English or Persian for definitions, but we can make it flexible.
+# Source and Target languages can be any of these.
