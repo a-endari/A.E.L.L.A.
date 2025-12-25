@@ -6,18 +6,43 @@
 
 ## Option 1: Use Pre-built Images (Fastest)
 
-Pull and run pre-built images from GitHub Container Registry:
+### 🪟 Windows & 💻 Intel Mac Users
+
+Pull and run pre-built images without cloning the repository:
 
 ```bash
-# Clone the repository
-git clone https://github.com/a-endari/A.E.L.L.A.git
-cd A.E.L.L.A
+# 1. Create a folder for the app
+mkdir aella-app && cd aella-app
 
-# Run using pre-built images
-docker-compose -f docker-compose.ghcr.yml up
+# 2. Download the configuration file
+# (On Windows PowerShell use: curl -o docker-compose.yml https://raw.githubusercontent.com/a-endari/A.E.L.L.A/main/docker-compose.ghcr.yml)
+curl -o docker-compose.yml https://raw.githubusercontent.com/a-endari/A.E.L.L.A/main/docker-compose.ghcr.yml
+
+# 3. Start the app!
+docker-compose up
 ```
 
-This downloads ready-to-use images (~500MB) and starts immediately!
+Once started, open **<http://localhost:3000>** in your browser.
+
+### 🍎 Apple Silicon (M1/M2/M3) Users
+
+I added native ARM64 images for macOS users. You can use them without cloning the full repository:
+
+```bash
+# 1. Create a folder for the app
+mkdir aella-app && cd aella-app
+
+# 2. Download the configuration file
+curl -o docker-compose.yml https://raw.githubusercontent.com/a-endari/A.E.L.L.A/main/docker-compose.ghcr.yml
+
+# 3. Modify it to use the ARM64 images
+sed -i '' 's/:latest/:latest-arm64/g' docker-compose.yml
+
+# 4. Start the app!
+docker-compose up
+```
+
+Once started, open **<http://localhost:3000>** in your browser.
 
 ---
 
